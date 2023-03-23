@@ -15,16 +15,15 @@ function showAlert(message, className, formType) {
   // Update the alert container content
   alertContainer.textContent = message;
   alertContainer.classList.add(className);
-  alertContainer.style.display = 'block';
+  alertContainer.style.display = "block";
 
   // Remove the alert message after 3 seconds
   setTimeout(() => {
-      alertContainer.textContent = '';
-      alertContainer.classList.remove(className);
-      alertContainer.style.display = 'none';
+    alertContainer.textContent = "";
+    alertContainer.classList.remove(className);
+    alertContainer.style.display = "none";
   }, 3000);
 }
-
 
 // Display or hide authentication forms and logout button based on user's login status
 function displayAuthElements() {
@@ -49,6 +48,22 @@ function loadTasks() {
   });
 }
 
+// Flip-btn
 
+document.querySelectorAll(".flip-btn").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    var card = document.querySelector(".card");
+    card.classList.toggle("flipped");
+    btn.style.display = "none";
+  });
+});
 
-
+document.querySelectorAll("form").forEach((form) => {
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var flipBtn = form.querySelector(".flip-btn");
+    if (flipBtn) {
+      flipBtn.style.display = "block";
+    }
+  });
+});
