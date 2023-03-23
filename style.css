@@ -186,3 +186,16 @@ h1#todo-title {
 .flip-btn:hover {
   background-color: var(--primary-color-hover);
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 2s ease-in-out;
+}

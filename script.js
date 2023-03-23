@@ -67,3 +67,5 @@ document.querySelectorAll("form").forEach((form) => {
     }
   });
 });
+
+document.getElementById("logged-in-section").classList.add("fade-in");
