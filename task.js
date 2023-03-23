@@ -30,12 +30,14 @@ function createTaskItem(taskText) {
 
   const editButton = document.createElement("button");
   editButton.textContent = "Edit";
+  editButton.classList.add("edit-button");
   editButton.addEventListener("click", () => {
     editTask(listItem);
   });
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
+  deleteButton.classList.add("delete-button");
   deleteButton.addEventListener("click", () => {
     deleteTask(listItem);
   });
@@ -61,6 +63,7 @@ function editTask(listItem) {
   const editButton = listItem.querySelector("button");
   const saveButton = document.createElement("button");
   saveButton.textContent = "Save";
+  saveButton.classList.add("save-button");
   saveButton.addEventListener("click", () => {
     updateTask(listItem, input, saveButton, editButton, currentText);
   });
@@ -102,5 +105,3 @@ function deleteTask(listItem) {
 
   listItem.remove();
 }
-
-
