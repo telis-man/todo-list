@@ -28,8 +28,8 @@ body {
   padding: 30px;
   background: rgba(100, 222, 150, 0.1);
   border-radius: 4px;
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   margin-bottom: 40px;
@@ -112,8 +112,8 @@ li {
   margin-bottom: 5px;
   border-radius: 4px;
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: space-between;
 }
 
 button.edit-button,
@@ -241,3 +241,16 @@ button.delete-button {
 button.delete-button:hover {
   background-color: #d32f2f;
 }
+
+
+.like-icon {
+  font-size: 16px;
+  cursor: pointer;
+  color: #0077cc;
+  margin-right: 10px;
+}
+
+li.favorite .like-icon {
+  color: #e74c3c;
+}
+

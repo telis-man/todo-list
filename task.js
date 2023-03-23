@@ -28,6 +28,12 @@ function createTaskItem(taskText) {
   const listItem = document.createElement("li");
   const textNode = document.createTextNode(taskText);
 
+  const likeButton = document.createElement("i");
+  likeButton.className = "fas fa-thumbs-up like-icon";
+  likeButton.addEventListener("click", () => {
+    listItem.classList.toggle("favorite");
+  });
+
   const editButton = document.createElement("button");
   editButton.textContent = "Edit";
   editButton.classList.add("edit-button");
@@ -43,6 +49,7 @@ function createTaskItem(taskText) {
   });
 
   listItem.appendChild(textNode);
+  listItem.appendChild(likeButton);
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
 
