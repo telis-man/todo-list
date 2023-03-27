@@ -21,6 +21,7 @@ loginForm.addEventListener("submit", (e) => {
   }
 
   loggedInUser = user;
+  localStorage.setItem("loggedIn", true);
   showAlert("Login successful!", "success", "login");
   loginForm.reset();
   loadTasks();
@@ -34,4 +35,3 @@ function displayLoggedInSection() {
   document.getElementById("todo-title").style.display = "block";
   document.getElementById("logged-in-section").style.display = "block";
 }
-
