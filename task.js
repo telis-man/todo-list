@@ -26,7 +26,12 @@ addTaskForm.addEventListener("submit", (e) => {
 // Create a task list item
 function createTaskItem(taskText) {
   const listItem = document.createElement("li");
-  const textNode = document.createTextNode(taskText);
+  const textNode = document.createElement("span");
+  textNode.textContent = taskText;
+
+  const buttonsContainer = document.createElement("div");
+  buttonsContainer.style.display = "inline-block";
+  buttonsContainer.style.marginLeft = "10px";
 
   const likeButton = document.createElement("i");
   likeButton.className = "fas fa-thumbs-up like-icon";
@@ -38,7 +43,7 @@ function createTaskItem(taskText) {
   editButton.textContent = "Edit";
   editButton.classList.add("edit-button");
   editButton.addEventListener("click", () => {
-    editTask(listItem);
+    editTask(listItem, editButton);
   });
 
   const deleteButton = document.createElement("button");
@@ -48,16 +53,18 @@ function createTaskItem(taskText) {
     deleteTask(listItem);
   });
 
+  buttonsContainer.appendChild(likeButton);
+  buttonsContainer.appendChild(editButton);
+  buttonsContainer.appendChild(deleteButton);
+
   listItem.appendChild(textNode);
-  listItem.appendChild(likeButton);
-  listItem.appendChild(editButton);
-  listItem.appendChild(deleteButton);
+  listItem.appendChild(buttonsContainer);
 
   return listItem;
 }
 
 // Edit task in place
-function editTask(listItem) {
+function editTask(listItem, editButton) {
   const textNode = listItem.childNodes[0];
   const currentText = textNode.textContent;
 
@@ -67,7 +74,6 @@ function editTask(listItem) {
 
   listItem.replaceChild(input, textNode);
 
-  const editButton = listItem.querySelector("button");
   const saveButton = document.createElement("button");
   saveButton.textContent = "Save";
   saveButton.classList.add("save-button");
@@ -75,7 +81,8 @@ function editTask(listItem) {
     updateTask(listItem, input, saveButton, editButton, currentText);
   });
 
-  listItem.replaceChild(saveButton, editButton);
+  const buttonsContainer = listItem.childNodes[1];
+  buttonsContainer.replaceChild(saveButton, editButton);
 
   input.focus();
 }
@@ -97,7 +104,8 @@ function updateTask(listItem, input, saveButton, editButton, oldText) {
     listItem.remove();
   }
 
-  listItem.replaceChild(editButton, saveButton);
+  const buttonsContainer = listItem.childNodes[1];
+  buttonsContainer.replaceChild(editButton, saveButton);
 }
 
 // Delete task

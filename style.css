@@ -16,7 +16,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #edf2f7;
+  background-color: #374151;
   color: #1a202c;
   line-height: 1.6;
 }
@@ -112,9 +112,15 @@ li {
   margin-bottom: 5px;
   border-radius: 4px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
+
+.buttons-container {
+  display: flex;
+  gap: 5px;
+}
+
 
 button.edit-button,
 button.delete-button {
