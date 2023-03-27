@@ -1,6 +1,7 @@
 const logoutButton = document.getElementById("logout-button");
 logoutButton.addEventListener("click", () => {
   loggedInUser = null;
+  localStorage.removeItem(loggedInUserKey);
   displayLoggedOutSection();
 });
 

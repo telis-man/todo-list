@@ -21,16 +21,9 @@ loginForm.addEventListener("submit", (e) => {
   }
 
   loggedInUser = user;
+  localStorage.setItem(loggedInUserKey, JSON.stringify(loggedInUser));
   showAlert("Login successful!", "success", "login");
   loginForm.reset();
   loadTasks();
   displayLoggedInSection();
 });
-
-function displayLoggedInSection() {
-  registrationContainer.style.display = "none";
-  loginContainer.style.display = "none";
-  document.getElementById("logout-container").style.display = "block";
-  document.getElementById("todo-title").style.display = "block";
-  document.getElementById("logged-in-section").style.display = "block";
-}
