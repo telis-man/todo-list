@@ -21,7 +21,6 @@ loginForm.addEventListener("submit", (e) => {
   }
 
   loggedInUser = user;
-  localStorage.setItem("loggedIn", true);
   showAlert("Login successful!", "success", "login");
   loginForm.reset();
   loadTasks();

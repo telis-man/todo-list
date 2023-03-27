@@ -1,10 +1,6 @@
 const logoutButton = document.getElementById("logout-button");
-const registrationContainer = document.getElementById("registration-container");
-const loginContainer = document.getElementById("login-container");
-
 logoutButton.addEventListener("click", () => {
   loggedInUser = null;
-  localStorage.removeItem("loggedIn"); // Remove the user's login state
   displayLoggedOutSection();
 });
 
