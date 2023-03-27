@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Nunito, sans-serif;
+}
+
+body {
+  background-color: #a459d1;
+}
+
+body .wrapper {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body .wrapper form input {
+  width: 30vw;
+  border-radius: 20px;
+}
+
+body .wrapper .container {
+  flex-direction: column;
+  display: flex;
+}
+
+body .wrapper .container > div {
+  background-color: #f5eaea;
+  border: 1px solid red;
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+}
+
+body .wrapper .container > div > * {
+  margin: 0 10px;
+}
+
+/*# sourceMappingURL=App.decac91a.css.map */
