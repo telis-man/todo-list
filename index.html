@@ -12,11 +12,12 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
+
     <script defer type="module" src="script.js"></script>
+    <script defer type="module" src="global.js"></script>
     <script defer type="module" src="registration.js"></script>
     <script defer type="module" src="login.js"></script>
     <script defer type="module" src="logout.js"></script>
-    <script defer type="module" src="global.js"></script>
   </head>
   <body>
     <div class="animated-background"></div>
@@ -27,19 +28,9 @@
             <h1>Login</h1>
             <form id="login-form">
               <label for="login-username"></label>
-              <input
-                type="text"
-                id="login-username"
-                placeholder="Username"
-                required
-              />
+              <input type="text" id="login-username" placeholder="Username" required />
               <label for="login-password"></label>
-              <input
-                type="password"
-                id="login-password"
-                placeholder="Password"
-                required
-              />
+              <input type="password" id="login-password" placeholder="Password" required />
               <br />
               <button type="submit">Login</button>
               <button type="button" class="flip-btn">Switch to Register</button>
@@ -52,19 +43,9 @@
             <h1>Registration</h1>
             <form id="registration-form">
               <label for="register-username"></label>
-              <input
-                type="text"
-                id="register-username"
-                placeholder="Username"
-                required
-              />
+              <input type="text" id="register-username" placeholder="Username" required />
               <label for="register-password"></label>
-              <input
-                type="password"
-                id="register-password"
-                placeholder="Password"
-                required
-              />
+              <input type="password" id="register-password" placeholder="Password" required />
               <br />
               <button type="submit">Register</button>
               <button type="button" class="flip-btn">Switch to Login</button>

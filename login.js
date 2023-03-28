@@ -2,6 +2,7 @@ const loginForm = document.getElementById('login-form')
 export const registrationContainer = document.getElementById('registration-container')
 export const loginContainer = document.getElementById('login-container')
 import { loadTasks, getUser, showAlert } from './script'
+import { loggedInUserKey } from './global'
 
 loginForm.addEventListener('submit', e => {
   e.preventDefault()
@@ -22,7 +23,7 @@ loginForm.addEventListener('submit', e => {
   }
 
   loggedInUser = user
-  localStorage.setItem(loggedInUserKey, JSON.stringify(loggedInUser));
+  localStorage.setItem(loggedInUserKey, JSON.stringify(loggedInUser))
   showAlert('Login successful!', 'success', 'login')
   loginForm.reset()
   loadTasks()
@@ -36,4 +37,3 @@ function displayLoggedInSection() {
   document.getElementById('todo-title').style.display = 'block'
   document.getElementById('logged-in-section').style.display = 'block'
 }
-

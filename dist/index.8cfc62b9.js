@@ -560,6 +560,7 @@ function hmrAccept(bundle, id) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getUser", ()=>getUser);
+parcelHelpers.export(exports, "saveUser", ()=>saveUser);
 parcelHelpers.export(exports, "showAlert", ()=>showAlert);
 // Load tasks for the loggedInUser
 parcelHelpers.export(exports, "loadTasks", ()=>loadTasks);
