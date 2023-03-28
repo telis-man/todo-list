@@ -673,6 +673,8 @@ function createTaskItem(taskText) {
     listItem.appendChild(buttonsContainer);
     return listItem;
 }
+console.log(createTaskItem("RandomText").innerHTML);
+// module.exports = createTaskItem
 // Edit task in place
 function editTask(listItem, editButton) {
     const textNode = listItem.childNodes[0];
