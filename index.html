@@ -10,28 +10,26 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
-    <script defer src="registration.js"></script>
-    <script defer src="login.js"></script>
-    <script defer src="task.js"></script>
-    <script defer src="logout.js"></script>
-    <script defer src="global.js"></script>
+    <script defer type="module" src="script.js"></script>
+    <script defer type="module" src="registration.js"></script>
+    <script defer type="module" src="login.js"></script>
+    <script defer type="module" src="logout.js"></script>
+    <script defer type="module" src="global.js"></script>
   </head>
   <body>
+    <div class="animated-background"></div>
     <div id="card-container">
       <div class="card">
         <div class="front">
           <div id="login-container">
             <h1>Login</h1>
             <form id="login-form">
-              <label for="login-username">Username:</label>
-              <input type="text" id="login-username" required />
-              <br />
-              <label for="login-password">Password:</label>
-              <input type="password" id="login-password" required />
+              <label for="login-username"></label>
+              <input type="text" id="login-username" placeholder="Username" required />
+              <label for="login-password"></label>
+              <input type="password" id="login-password" placeholder="Password" required />
               <br />
               <button type="submit">Login</button>
               <button type="button" class="flip-btn">Switch to Register</button>
@@ -43,11 +41,10 @@
           <div id="registration-container">
             <h1>Registration</h1>
             <form id="registration-form">
-              <label for="register-username">Username:</label>
-              <input type="text" id="register-username" required />
-              <br />
-              <label for="register-password">Password:</label>
-              <input type="password" id="register-password" required />
+              <label for="register-username"></label>
+              <input type="text" id="register-username" placeholder="Username" required />
+              <label for="register-password"></label>
+              <input type="password" id="register-password" placeholder="Password" required />
               <br />
               <button type="submit">Register</button>
               <button type="button" class="flip-btn">Switch to Login</button>
@@ -66,6 +63,7 @@
       <form id="add-task-form">
         <label for="task-input">Add Task:</label>
         <input type="text" id="task-input" required />
+        <br />
         <button type="submit">Add</button>
       </form>
       <ul id="task-list"></ul>
