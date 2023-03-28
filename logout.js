@@ -3,8 +3,10 @@ import { registrationContainer } from './login'
 import { loginContainer } from './login'
 logoutButton.addEventListener('click', () => {
   loggedInUser = null
+  localStorage.removeItem(loggedInUserKey);
   displayLoggedOutSection()
 })
+
 
 function displayLoggedOutSection() {
   registrationContainer.style.display = 'block'
