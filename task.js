@@ -1,4 +1,4 @@
-// Add a new task
+// // Add a new task
 const addTaskForm = document.getElementById("add-task-form");
 const taskList = document.getElementById("task-list");
 
