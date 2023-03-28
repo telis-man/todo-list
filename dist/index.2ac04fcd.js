@@ -557,23 +557,24 @@ function hmrAccept(bundle, id) {
 }
 
 },{}],"8ageO":[function(require,module,exports) {
+var _script = require("./script");
 const registrationForm = document.getElementById("registration-form");
 registrationForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     const username = document.getElementById("register-username").value;
     const password = document.getElementById("register-password").value;
-    if (getUser(username)) {
-        showAlert("Username already exists.", "error", "registration");
+    if ((0, _script.getUser)(username)) {
+        (0, _script.showAlert)("Username already exists.", "error", "registration");
         return;
     }
-    saveUser({
+    (0, _script.saveUser)({
         username,
         password
     });
-    showAlert("Registration successful!", "success", "registration");
+    (0, _script.showAlert)("Registration successful!", "success", "registration");
     registrationForm.reset();
 });
 
-},{}]},["kTde4","8ageO"], "8ageO", "parcelRequire5b66")
+},{"./script":"6rimH"}]},["kTde4","8ageO"], "8ageO", "parcelRequire5b66")
 
 //# sourceMappingURL=index.2ac04fcd.js.map

@@ -3,7 +3,7 @@ export function getUser(username) {
   return users[username]
 }
 
-function saveUser(user) {
+export function saveUser(user) {
   const users = JSON.parse(localStorage.getItem('users')) || {}
   user.tasks = user.tasks || []
   users[user.username] = user

@@ -1,3 +1,4 @@
+import { loadTasks, getUser, showAlert, saveUser } from './script'
 const registrationForm = document.getElementById('registration-form')
 
 registrationForm.addEventListener('submit', e => {

@@ -562,6 +562,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "registrationContainer", ()=>registrationContainer);
 parcelHelpers.export(exports, "loginContainer", ()=>loginContainer);
 var _script = require("./script");
+var _global = require("./global");
 const loginForm = document.getElementById("login-form");
 const registrationContainer = document.getElementById("registration-container");
 const loginContainer = document.getElementById("login-container");
@@ -579,6 +580,7 @@ loginForm.addEventListener("submit", (e)=>{
         return;
     }
     loggedInUser = user;
+    localStorage.setItem((0, _global.loggedInUserKey), JSON.stringify(loggedInUser));
     (0, _script.showAlert)("Login successful!", "success", "login");
     loginForm.reset();
     (0, _script.loadTasks)();
@@ -592,6 +594,6 @@ function displayLoggedInSection() {
     document.getElementById("logged-in-section").style.display = "block";
 }
 
-},{"./script":"6rimH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["bNTgH","jZEa7"], "jZEa7", "parcelRequire5b66")
+},{"./script":"6rimH","./global":"72ZGE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["bNTgH","jZEa7"], "jZEa7", "parcelRequire5b66")
 
 //# sourceMappingURL=index.3c2c95b0.js.map

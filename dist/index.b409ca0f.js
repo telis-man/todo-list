@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"lC0PC":[function(require,module,exports) {
+})({"igVn9":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "733f8b1d2dcaa6a0";
+module.bundle.HMR_BUNDLE_ID = "ca586b0db409ca0f";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, globalThis, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -556,23 +556,35 @@ function hmrAccept(bundle, id) {
     });
 }
 
-},{}],"gWy5B":[function(require,module,exports) {
+},{}],"72ZGE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "loggedInUserKey", ()=>loggedInUserKey);
+parcelHelpers.export(exports, "usersKey", ()=>usersKey);
+parcelHelpers.export(exports, "loggedInSection", ()=>loggedInSection);
+parcelHelpers.export(exports, "todoTitle", ()=>todoTitle);
+var _script = require("./script");
 var _login = require("./login");
-var _global = require("./global");
-const logoutButton = document.getElementById("logout-button");
-logoutButton.addEventListener("click", ()=>{
-    loggedInUser = null;
-    localStorage.removeItem((0, _global.loggedInUserKey));
-    displayLoggedOutSection();
-});
-function displayLoggedOutSection() {
-    (0, _login.registrationContainer).style.display = "block";
-    (0, _login.loginContainer).style.display = "block";
-    document.getElementById("logout-container").style.display = "none";
-    document.getElementById("todo-title").style.display = "none";
-    document.getElementById("logged-in-section").style.display = "none";
+const loggedInUserKey = "loggedInUser";
+const usersKey = "users";
+const loggedInSection = document.getElementById("logged-in-section");
+const todoTitle = document.getElementById("todo-title");
+function displayLoggedInSection() {
+    (0, _login.registrationContainer).style.display = "none";
+    (0, _login.loginContainer).style.display = "none";
+    document.getElementById("logout-container").style.display = "block";
+    document.getElementById("todo-title").style.display = "block";
+    document.getElementById("logged-in-section").style.display = "block";
 }
+document.addEventListener("DOMContentLoaded", ()=>{
+    const loggedIn = localStorage.getItem(loggedInUserKey);
+    if (loggedIn) {
+        loggedInUser = JSON.parse(localStorage.getItem(loggedInUserKey));
+        (0, _script.loadTasks)();
+        displayLoggedInSection();
+    }
+});
 
-},{"./login":"jZEa7","./global":"72ZGE"}]},["lC0PC","gWy5B"], "gWy5B", "parcelRequire5b66")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./script":"6rimH","./login":"jZEa7"}]},["igVn9"], null, "parcelRequire5b66")
 
-//# sourceMappingURL=index.2dcaa6a0.js.map
+//# sourceMappingURL=index.b409ca0f.js.map
