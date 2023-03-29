@@ -12,11 +12,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css" />
-
-    <script defer type="module" src="login.js"></script>
     <script defer type="module" src="script.js"></script>
     <script defer type="module" src="registration.js"></script>
     <script defer type="module" src="global.js"></script>
+    <script defer type="module" src="login.js"></script>
     <script defer type="module" src="logout.js"></script>
   </head>
   <body>
@@ -56,7 +55,9 @@
       </div>
     </div>
     <div id="logout-container" class="fade-in" style="display: none">
-      <button id="logout-button">Logout</button>
+      <button id="logout-button" class="icon-button">
+        <i class="fas fa-sign-out-alt"></i>
+      </button>
     </div>
     <!-- To-Do List -->
     <h1 id="todo-title" style="display: none">To-Do List</h1>
