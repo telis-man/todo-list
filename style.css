@@ -1,11 +1,6 @@
 :root {
   --primary-color: #1f2937;
   --primary-color-hover: #334155;
-  --error-color: #dc2626;
-  --error-color-hover: #b91c1c;
-  --success-color: #059669;
-  --success-color-hover: #047857;
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -21,9 +16,9 @@ body {
   line-height: 1.6;
 }
 
-
+/* Registration and Login */
 #registration-container,
-#login-container{
+#login-container {
   max-width: 350px;
   margin: 100px auto;
   padding: 30px;
@@ -34,14 +29,23 @@ body {
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
   margin-bottom: 40px;
- 
 }
-#registration-container,
-#login-container h1{
+
+#registration-container h1,
+#login-container h1 {
   color: #fff;
   text-align: center;
 }
 
+/* Logout */
+#logout-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+/* Form */
 form {
   display: flex;
   flex-direction: column;
@@ -58,21 +62,22 @@ input[type="password"] {
   width: 100%;
   height: 40px;
   margin-top: 20px;
-  background: rgba(255,255,255,.5);
-  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0 15px;
   color: #FFF;
   border-radius: 5px;
   font-size: 14px;
 }
 
-input[type="text"],
-input[type="password"]:focus{
-  border: 1px solid rgba(255,255,255,.8);
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border: 1px solid rgba(255, 255, 255, 0.8);
   outline: none;
 }
+
 ::-webkit-input-placeholder {
-    color: #DDD;
+  color: #DDD;
 }
 
 li input[type="text"] {
@@ -82,42 +87,74 @@ li input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  color:#1a202c;
-}
-
-#task-input{
   color: #1a202c;
 }
 
+#task-input {
+  color: #1a202c;
+}
 
+/* Button */
 button[type="submit"] {
-  background-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 10px;
+  margin-top: 20px;
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button[type="submit"]:hover {
-  background-color: var(--primary-color-hover);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+button[type="submit"] i {
+  font-size: 1.2rem;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+#task-input {
+  flex-grow: 1;
+  margin-right: 10px;
 }
 
 .alert {
-  padding: 10px;
+  padding: 15px;
   margin-bottom: 20px;
-  display: none;
+  font-size: 1.1rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in;
 }
-
 .alert.error {
-  background-color: var(--error-color);
   color: #ffffff;
 }
 
 .alert.success {
-  background-color: var(--success-color);
-  color: #ffffff;
+  color:#ffffff;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 h1 {
@@ -139,19 +176,31 @@ h1 {
 
 ul {
   list-style: none;
- }
+}
 
 li {
-  background-color: #edf2f7;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
-  
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.8s ease-in;
 }
 
-
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 button.edit-button,
 button.delete-button {
@@ -164,25 +213,26 @@ button.delete-button {
 }
 
 h1#todo-title {
+  font-size: 2.5rem;
   text-align: center;
+  margin-bottom: 1rem;
+  color: #4a5568;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 1.7s ease-in;
 }
 
-#logout-button {
-  background-color: var(--error-color);
-  color: #fff;
-  border: 0;
-  padding: 10px;
-  font-size: 18px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  display: inline-block;
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-#logout-button:hover {
-  background-color: var(--error-color-hover);
-}
-
+/* Card flip */
 #card-container {
   display: grid;
   place-items: center;
@@ -211,36 +261,31 @@ h1#todo-title {
 
 .front {
   background-color: #fff;
-  
 }
 
 .back {
   background-color: #fff;
   transform: rotateY(180deg);
 }
-
 .flip-btn {
-  display: inline-block;
-  padding: 10px;
-  background-color: var(--primary-color);
+  background-color: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .flip-btn:hover {
-  background-color: var(--primary-color-hover);
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .fade-in {
@@ -249,47 +294,75 @@ h1#todo-title {
 
 button.save-button,
 button.edit-button,
-button.delete-button {
-  background-color: #0077cc;
+button.delete-button
+  {
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 14px;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 4px;
   margin-left: 5px;
-}
-
-button.save-button {
-  background-color: #4CAF50;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.3s, border-color 0.3s;
 }
 
 button.save-button:hover {
-  background-color: #43A047;
+  background: rgba(76, 175, 80, 0.5);
+  border-color: rgba(76, 175, 80, 0.7);
 }
 
 button.edit-button:hover {
-  background-color: #005fa3;
-}
-
-button.delete-button {
-  background-color: #f44336;
+  background: rgba(0, 119, 204, 0.5);
+  border-color: rgba(0, 119, 204, 0.7);
 }
 
 button.delete-button:hover {
-  background-color: #d32f2f;
+  background: rgba(244, 67, 54, 0.5);
+  border-color: rgba(244, 67, 54, 0.7);
 }
 
-
-.like-icon {
-  font-size: 16px;
+.like-icon  {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  padding: 6px 11px;
   cursor: pointer;
-  color: #0077cc;
-  margin-right: 10px;
+  border-radius: 4px;
+  margin-left: 5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.like-icon:hover{
+  background: rgba(240, 236, 6, 0.5);
+  border-color: rgba(217, 231, 19, 0.7);
+  
 }
 
 li.favorite .like-icon {
   color: #e74c3c;
+}
+
+.icon-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 20px;
+  color: #333;
+}
+
+.icon-button:hover {
+  color: #666;
+}
+
+.icon-button:focus {
+  outline: none;
 }
 
 .animated-background {
@@ -316,3 +389,44 @@ li.favorite .like-icon {
   }
 }
 
+label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #4a5568;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: #2d3748;
+}
+
+/* Mobilusis */
+@media (max-width: 480px) {
+  #registration-container,
+  #login-container {
+    margin: 50px auto;
+  }
+
+  li input[type="text"] {
+    max-width: 100%;
+  }
+}
+
+/* Plancete */
+@media (min-width: 481px) and (max-width: 768px) {
+  #registration-container,
+  #login-container {
+    margin: 70px auto;
+  }
+
+  li input[type="text"] {
+    max-width: 75%;
+  }
+}
+
+/* Dekstop */
+@media (min-width: 769px) {
+  
+}
