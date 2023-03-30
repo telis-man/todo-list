@@ -112,14 +112,14 @@ function createTaskItem(taskText) {
   })
 
   const editButton = document.createElement('button')
-  editButton.textContent = 'Edit'
+  editButton.innerHTML = '<i class="fas fa-edit"></i>'
   editButton.classList.add('edit-button')
   editButton.addEventListener('click', () => {
     editTask(listItem, editButton)
   })
 
   const deleteButton = document.createElement('button')
-  deleteButton.textContent = 'Delete'
+  deleteButton.innerHTML = '<i class="fas fa-trash"></i>'
   deleteButton.classList.add('delete-button')
   deleteButton.addEventListener('click', () => {
     deleteTask(listItem)
@@ -147,7 +147,7 @@ function editTask(listItem, editButton) {
   listItem.replaceChild(input, textNode)
 
   const saveButton = document.createElement('button')
-  saveButton.textContent = 'Save'
+  saveButton.innerHTML = '<i class="fas fa-save"></i>'
   saveButton.classList.add('save-button')
   saveButton.addEventListener('click', () => {
     updateTask(listItem, input, saveButton, editButton, currentText)
