@@ -1,10 +1,7 @@
-export const loggedInUserKey = 'loggedInUser'
-export const usersKey = 'users'
-export const loggedInSection = document.getElementById('logged-in-section')
-export const todoTitle = document.getElementById('todo-title')
-import { loadTasks } from './script'
-import { registrationContainer } from './login'
-import { loginContainer } from './login'
+const loggedInUserKey = 'loggedInUser'
+const usersKey = 'users'
+const loggedInSection = document.getElementById('logged-in-section')
+const todoTitle = document.getElementById('todo-title')
 
 function displayLoggedInSection() {
   registrationContainer.style.display = 'none'

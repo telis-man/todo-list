@@ -1,15 +1,15 @@
-export function getUser(username) {
+function getUser(username) {
   const users = JSON.parse(localStorage.getItem('users')) || {}
   return users[username]
 }
 
-export function saveUser(user) {
+function saveUser(user) {
   const users = JSON.parse(localStorage.getItem('users')) || {}
   user.tasks = user.tasks || []
   users[user.username] = user
   localStorage.setItem('users', JSON.stringify(users))
 }
-export function showAlert(message, className, formType) {
+function showAlert(message, className, formType) {
   const alertContainer = document.getElementById(`${formType}-alert`)
 
   // Update the alert container content
@@ -40,7 +40,7 @@ function displayAuthElements() {
 }
 
 // Load tasks for the loggedInUser
-export function loadTasks() {
+function loadTasks() {
   document.getElementById('task-list').innerHTML = ''
   loggedInUser.tasks.forEach(taskText => {
     const listItem = createTaskItem(taskText)
@@ -158,7 +158,7 @@ function editTask(listItem, editButton) {
 
   input.focus()
 }
-
+module.exports = editTask
 // Update task with the new text
 function updateTask(listItem, input, saveButton, editButton, oldText) {
   const newText = input.value.trim()
@@ -192,3 +192,133 @@ function deleteTask(listItem) {
 
   listItem.remove()
 }
+
+module.exports = deleteTask
+
+//script.js
+
+// task.js
+
+// // Add a new task
+
+addTaskForm.addEventListener('submit', e => {
+  e.preventDefault()
+
+  if (!loggedInUser) {
+    alert('Please log in to add tasks.')
+    return
+  }
+
+  const taskInput = document.getElementById('task-input')
+  const taskText = taskInput.value.trim()
+
+  if (taskText) {
+    const listItem = createTaskItem(taskText)
+    taskList.appendChild(listItem)
+    taskInput.value = ''
+
+    loggedInUser.tasks.push(taskText)
+    saveUser(loggedInUser)
+  }
+})
+
+module.exports = createTaskItem
+
+//task.js
+//login.js
+
+const loginForm = document.getElementById('login-form')
+const registrationContainer = document.getElementById('registration-container')
+const loginContainer = document.getElementById('login-container')
+
+loginForm.addEventListener('submit', e => {
+  e.preventDefault()
+
+  const username = document.getElementById('login-username').value
+  const password = document.getElementById('login-password').value
+
+  const user = getUser(username)
+
+  if (!user) {
+    showAlert('Username not found.', 'error', 'login')
+    return
+  }
+
+  if (user.password !== password) {
+    showAlert('Incorrect password.', 'error', 'login')
+    return
+  }
+
+  loggedInUser = user
+  localStorage.setItem(loggedInUserKey, JSON.stringify(loggedInUser))
+  showAlert('Login successful!', 'success', 'login')
+  loginForm.reset()
+  loadTasks()
+  displayLoggedInSection()
+})
+
+function displayLoggedInSection() {
+  registrationContainer.style.display = 'none'
+  loginContainer.style.display = 'none'
+  document.getElementById('logout-container').style.display = 'block'
+  document.getElementById('todo-title').style.display = 'block'
+  document.getElementById('logged-in-section').style.display = 'block'
+}
+
+//login.js
+//global.js
+
+const loggedInUserKey = 'loggedInUser'
+const usersKey = 'users'
+const loggedInSection = document.getElementById('logged-in-section')
+const todoTitle = document.getElementById('todo-title')
+
+document.addEventListener('DOMContentLoaded', () => {
+  const loggedIn = localStorage.getItem(loggedInUserKey)
+
+  if (loggedIn) {
+    loggedInUser = JSON.parse(localStorage.getItem(loggedInUserKey))
+    loadTasks()
+    displayLoggedInSection()
+  }
+})
+
+//global.js
+//registration.js
+const registrationForm = document.getElementById('registration-form')
+
+registrationForm.addEventListener('submit', e => {
+  e.preventDefault()
+
+  const username = document.getElementById('register-username').value
+  const password = document.getElementById('register-password').value
+
+  if (getUser(username)) {
+    showAlert('Username already exists.', 'error', 'registration')
+    return
+  }
+
+  saveUser({ username, password })
+  showAlert('Registration successful!', 'success', 'registration')
+  registrationForm.reset()
+})
+//registration.js
+
+//logout.js
+
+const logoutButton = document.getElementById('logout-button')
+
+logoutButton.addEventListener('click', () => {
+  loggedInUser = null
+  localStorage.removeItem(loggedInUserKey)
+  displayLoggedOutSection()
+})
+
+function displayLoggedOutSection() {
+  registrationContainer.style.display = 'block'
+  loginContainer.style.display = 'block'
+  document.getElementById('logout-container').style.display = 'none'
+  document.getElementById('todo-title').style.display = 'none'
+  document.getElementById('logged-in-section').style.display = 'none'
+}
+//logout.js

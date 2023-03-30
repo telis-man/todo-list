@@ -1,8 +1,6 @@
 const loginForm = document.getElementById('login-form')
-export const registrationContainer = document.getElementById('registration-container')
-export const loginContainer = document.getElementById('login-container')
-import { loadTasks, getUser, showAlert } from './script'
-import { loggedInUserKey } from './global'
+const registrationContainer = document.getElementById('registration-container')
+const loginContainer = document.getElementById('login-container')
 
 loginForm.addEventListener('submit', e => {
   e.preventDefault()

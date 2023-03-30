@@ -1,7 +1,5 @@
 const logoutButton = document.getElementById('logout-button')
-import { registrationContainer } from './login'
-import { loginContainer } from './login'
-import { loggedInUserKey } from './global'
+
 logoutButton.addEventListener('click', () => {
   loggedInUser = null
   localStorage.removeItem(loggedInUserKey)
