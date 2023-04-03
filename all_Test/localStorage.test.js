@@ -1,4 +1,4 @@
-const { getUser, saveUser, showAlert } = require('./utils')
+const { getUser, saveUser, showAlert } = require('./localStorage')
 
 describe('getUser', () => {
   beforeEach(() => {
