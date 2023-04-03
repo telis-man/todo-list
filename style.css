@@ -365,18 +365,6 @@ li.favorite .like-icon {
   outline: none;
 }
 
-.edit-button,
-.delete-button {
-  border: none;
-  background-color: transparent;
-}
-
-
-.delete-button{
-  border: none;
-  background-color: transparent;
-}
-
 .animated-background {
   position: absolute;
   top: 0;

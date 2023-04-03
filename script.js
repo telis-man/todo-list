@@ -1,6 +1,6 @@
 function getUser(username) {
   const users = JSON.parse(localStorage.getItem('users')) || {}
-  return users[username]
+  return users[username] || null;
 }
 
 function saveUser(user) {
@@ -112,14 +112,14 @@ function createTaskItem(taskText) {
   })
 
   const editButton = document.createElement('button')
-  editButton.innerHTML = '<i class="fas fa-edit"></i>'
+  editButton.textContent = 'Edit'
   editButton.classList.add('edit-button')
   editButton.addEventListener('click', () => {
     editTask(listItem, editButton)
   })
 
   const deleteButton = document.createElement('button')
-  deleteButton.innerHTML = '<i class="fas fa-trash"></i>'
+  deleteButton.textContent = 'Delete'
   deleteButton.classList.add('delete-button')
   deleteButton.addEventListener('click', () => {
     deleteTask(listItem)
@@ -147,7 +147,7 @@ function editTask(listItem, editButton) {
   listItem.replaceChild(input, textNode)
 
   const saveButton = document.createElement('button')
-  saveButton.innerHTML = '<i class="fas fa-save"></i>'
+  saveButton.textContent = 'Save'
   saveButton.classList.add('save-button')
   saveButton.addEventListener('click', () => {
     updateTask(listItem, input, saveButton, editButton, currentText)
