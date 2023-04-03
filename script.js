@@ -1,6 +1,6 @@
 function getUser(username) {
   const users = JSON.parse(localStorage.getItem('users')) || {}
-  return users[username] || null;
+  return users[username] || null
 }
 
 function saveUser(user) {
@@ -158,7 +158,7 @@ function editTask(listItem, editButton) {
 
   input.focus()
 }
-module.exports = editTask
+
 // Update task with the new text
 function updateTask(listItem, input, saveButton, editButton, oldText) {
   const newText = input.value.trim()
@@ -193,8 +193,6 @@ function deleteTask(listItem) {
   listItem.remove()
 }
 
-module.exports = deleteTask
-
 //script.js
 
 // task.js
@@ -222,9 +220,8 @@ addTaskForm.addEventListener('submit', e => {
   }
 })
 
-module.exports = createTaskItem
-
 //task.js
+
 //login.js
 
 const loginForm = document.getElementById('login-form')
@@ -264,8 +261,8 @@ function displayLoggedInSection() {
   document.getElementById('todo-title').style.display = 'block'
   document.getElementById('logged-in-section').style.display = 'block'
 }
-
 //login.js
+
 //global.js
 
 const loggedInUserKey = 'loggedInUser'
@@ -282,8 +279,8 @@ document.addEventListener('DOMContentLoaded', () => {
     displayLoggedInSection()
   }
 })
-
 //global.js
+
 //registration.js
 const registrationForm = document.getElementById('registration-form')
 
