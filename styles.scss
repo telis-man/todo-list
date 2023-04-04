@@ -1,0 +1,25 @@
+@import '~bootstrap/scss/bootstrap';
+
+body {
+
+    .navbar {
+        padding: 1em;
+
+        #welcomeTag {
+            margin-right: 2em;
+        }
+    }
+
+    .container {
+        align-self: center;
+        width: clamp(320px, 40vw, 500px);
+        margin-top: 20vh;
+
+        .card {
+            &>button {
+                margin-right: 5px;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,19 @@
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    border: 1px solid red;
+    display: flex;
+    height: 100vh;
+
+    .container {
+        align-self: center;
+        width: clamp(320px, 40vw, 500px);
+        border: 1px solid blue;
+
+        form {
+            &>* {
+                margin: 5px;
+            }
+        }
+    }
+}

@@ -4,9 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>toDoodie</title>
+    <link rel="stylesheet" href="loginForm.scss" />
+    <script defer type="module" src="loginForm.js"></script>
   </head>
   <body>
-    text1
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input name="formUsername" type="text" class="form-control usernameInputEelement" placeholder="Enter Username" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            name="formPassword"
+            type="password"
+            class="form-control passwordInputEelement"
+            placeholder="Enter Password" />
+        </div>
+        <button type="submit" class="buttonLogin btn btn-primary">Login</button>
+        <button class="buttonRegister btn btn-secondary float-end">Register</button>
+      </form>
+      <!-- <a href="main.html">Go</a> -->
+    </div>
   </body>
 </html>
