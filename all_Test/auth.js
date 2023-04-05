@@ -1,30 +1,30 @@
-const { getUser, saveUser } = require('./localStorage')
+const { getUser, saveUser } = require('./userStorage');
 
 function loginUser(username, password) {
-  const user = getUser(username)
+  const user = getUser(username);
 
   if (!user) {
-    return { success: false, message: 'Username not found.' }
+    return { success: false, message: 'Username not found.' };
   }
 
   if (user.password !== password) {
-    return { success: false, message: 'Incorrect password.' }
+    return { success: false, message: 'Incorrect password.' };
   }
 
-  return { success: true, user }
+  return { success: true, user };
 }
 
 function registerUser(username, password) {
   if (getUser(username)) {
-    return { success: false, message: 'Username already exists.' }
+    return { success: false, message: 'Username already exists.' };
   }
 
-  const newUser = { username, password, tasks: [] }
-  saveUser(newUser)
-  return { success: true, message: 'Registration successful!' }
+  const newUser = { username, password, tasks: [] };
+  saveUser(newUser);
+  return { success: true, message: 'Registration successful!' };
 }
 
 module.exports = {
   loginUser,
   registerUser,
-}
+};
