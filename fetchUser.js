@@ -24,9 +24,9 @@ export function addNewUser(userObj, username) {
 export function deleteTask(task) {
   let username = JSON.parse(sessionStorage.getItem('user')).username
   let users = JSON.parse(localStorage.getItem('users'))
-  for (user of users) {
+  for (let user of users) {
     if (user.username == username) {
-      let clearedArr = user.content.filter(e => e !== task)
+      let clearedArr = user.content.filter(e => e.taskText !== task)
       user.content = clearedArr
       localStorage.setItem('users', JSON.stringify(users))
     }
@@ -36,9 +36,13 @@ export function deleteTask(task) {
 export function addTask(task) {
   let username = JSON.parse(sessionStorage.getItem('user')).username
   let users = JSON.parse(localStorage.getItem('users'))
-  for (user of users) {
+  for (let user of users) {
     if (user.username == username) {
-      user.content.push(task)
+      let taskObj = {
+        taskText: task,
+        likeStatus: false,
+      }
+      user.content.push(taskObj)
       localStorage.setItem('users', JSON.stringify(users))
     }
   }
@@ -47,9 +51,21 @@ export function addTask(task) {
 export function updateTask(task, updatedTask) {
   let username = JSON.parse(sessionStorage.getItem('user')).username
   let users = JSON.parse(localStorage.getItem('users'))
-  for (user of users) {
+  for (let user of users) {
     if (user.username == username) {
-      user.content[user.content.indexOf(task)] = updatedTask
+      console.log(user.content, task)
+      user.content.find(e => e.taskText == task).taskText = updatedTask
+      localStorage.setItem('users', JSON.stringify(users))
+    }
+  }
+}
+
+export function toggleLikeStatus(task) {
+  let username = JSON.parse(sessionStorage.getItem('user')).username
+  let users = JSON.parse(localStorage.getItem('users'))
+  for (let user of users) {
+    if (user.username == username) {
+      user.content.find(e => e.taskText == task).likeStatus = !user.content.find(e => e.taskText == task).likeStatus
       localStorage.setItem('users', JSON.stringify(users))
     }
   }

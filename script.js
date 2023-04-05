@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
     window.location.href = 'index.html'
   })
   //Welcome tag
-  document.querySelector('#welcomeTag').textContent = `Welcome ${user.username}`
+  document.querySelector('#welcomeTag').textContent = `Welcome, ${user.username}!`
 
   document.querySelector('#addButton').addEventListener('click', () => {
     const taskValue = document.querySelector('#inputTask').value
@@ -22,4 +22,10 @@ window.addEventListener('load', () => {
       console.log('Enter text')
     }
   })
+  //add all tasks
+  let allTasks = user.content
+
+  for (let task of allTasks) {
+    generateTaskItem(task.taskText, task.likeStatus)
+  }
 })

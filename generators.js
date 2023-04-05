@@ -1,6 +1,7 @@
 import { deleteTask } from './fetchUser'
 import { addTask } from './fetchUser'
 import { updateTask } from './fetchUser'
+import { toggleLikeStatus } from './fetchUser'
 
 export function generateRegisterForm() {
   document.querySelector('.buttonLogin').remove()
@@ -29,35 +30,35 @@ export function generateRegisterForm() {
   formElement.append(repeatPasswordDiv, buttonElementRegister, buttonElementBack)
 }
 
-function editControl(editButton, cardBody, card, task, saveButton) {
-  editButton.addEventListener('click', () => {
-    let editTaskInput = document.createElement('input')
-    editTaskInput.className = 'form-control'
-    let text = cardBody.textContent
-    editTaskInput.value = text
-    saveButton.disabled = false
-    editButton.disabled = true
-    cardBody.textContent = ''
-    cardBody.prepend(editTaskInput)
+// function editControl(editButton, cardBody, card, task, saveButton) {
+//   editButton.addEventListener('click', () => {
+//     let editTaskInput = document.createElement('input')
+//     editTaskInput.className = 'form-control'
+//     let text = cardBody.textContent
+//     editTaskInput.value = text
+//     saveButton.disabled = false
+//     editButton.disabled = true
+//     cardBody.textContent = ''
+//     cardBody.prepend(editTaskInput)
 
-    saveButton.addEventListener('click', () => {
-      updateTask(text, editTaskInput.value)
-      saveButton.disabled = true
-      cardBody.textContent = editTaskInput.value
-      editButton.disabled = false
-      editTaskInput.remove()
-    })
-  })
-}
+//     saveButton.addEventListener('click', () => {
+//       updateTask(text, editTaskInput.value)
+//       saveButton.disabled = true
+//       cardBody.textContent = editTaskInput.value
+//       editButton.disabled = false
+//       editTaskInput.remove()
+//     })
+//   })
+// }
 
-function deleteControl(deleteButton, card, cardBody) {
-  deleteButton.addEventListener('click', () => {
-    deleteTask(cardBody.textContent)
-    card.remove()
-  })
-}
+// function deleteControl(deleteButton, card, cardBody) {
+//   deleteButton.addEventListener('click', () => {
+//     deleteTask(cardBody.textContent)
+//     card.remove()
+//   })
+// }
 
-export function generateTaskItem(task) {
+export function generateTaskItem(task, likeStatus) {
   let card = document.createElement('div')
   card.className = 'card d-flex flex-row align-items-center mt-3'
 
@@ -78,10 +79,49 @@ export function generateTaskItem(task) {
   saveButton.textContent = 'Save'
   saveButton.disabled = true
 
-  editControl(editButton, cardBody, card, task, saveButton)
-  deleteControl(deleteButton, card, cardBody)
+  // editControl(editButton, cardBody, card, task, saveButton)
+  editButton.addEventListener('click', () => {
+    let editTaskInput = document.createElement('input')
+    editTaskInput.className = 'form-control'
+    let text = cardBody.textContent
+    editTaskInput.value = text
+    saveButton.disabled = false
+    editButton.disabled = true
+    cardBody.textContent = ''
+    cardBody.prepend(editTaskInput)
 
-  card.append(cardBody, editButton, deleteButton, saveButton)
+    saveButton.addEventListener('click', () => {
+      updateTask(text, editTaskInput.value)
+      saveButton.disabled = true
+      cardBody.textContent = editTaskInput.value
+      editButton.disabled = false
+      editTaskInput.remove()
+    })
+  })
+  // deleteControl(deleteButton, card, cardBody)
 
-  document.querySelector('.container').append(card)
+  deleteButton.addEventListener('click', () => {
+    deleteTask(cardBody.textContent)
+    card.remove()
+  })
+
+  //heart button
+  let heartButton = document.createElement('i')
+  likeStatus
+    ? (heartButton.className = 'fa-sharp fa-solid fa-heart')
+    : (heartButton.className = 'fa-sharp fa-regular fa-heart')
+  heartButton.style.color = 'red'
+  heartButton.style.transform = 'translate(40px)'
+  heartButton.style.fontSize = '1.5em'
+
+  heartButton.addEventListener('click', () => {
+    heartButton.classList.toggle('fa-regular')
+    heartButton.classList.toggle('fa-solid')
+    toggleLikeStatus(cardBody.textContent)
+  })
+
+  // <i class="fa-sharp fa-solid fa-heart"></i>
+  // <i class="fa-sharp fa-regular fa-heart"></i>
+  card.append(cardBody, editButton, deleteButton, saveButton, heartButton)
+  document.querySelector('.addTaskContainer').after(card)
 }
