@@ -1,6 +1,6 @@
 function getUser(username) {
   const users = JSON.parse(localStorage.getItem('users')) || {}
-  return users[username] || null
+  return users[username] || null;
 }
 
 function saveUser(user) {
@@ -112,15 +112,15 @@ function createTaskItem(taskText) {
   })
 
   const editButton = document.createElement('button')
+  editButton.textContent = 'Edit'
   editButton.classList.add('edit-button')
-  editButton.innerHTML = '<i class="fas fa-edit"></i>'
   editButton.addEventListener('click', () => {
     editTask(listItem, editButton)
   })
 
   const deleteButton = document.createElement('button')
+  deleteButton.textContent = 'Delete'
   deleteButton.classList.add('delete-button')
-  deleteButton.innerHTML = '<i class="fas fa-trash"></i>'
   deleteButton.addEventListener('click', () => {
     deleteTask(listItem)
   })
@@ -147,8 +147,8 @@ function editTask(listItem, editButton) {
   listItem.replaceChild(input, textNode)
 
   const saveButton = document.createElement('button')
+  saveButton.textContent = 'Save'
   saveButton.classList.add('save-button')
-  saveButton.innerHTML = '<i class="fas fa-save"></i>'
   saveButton.addEventListener('click', () => {
     updateTask(listItem, input, saveButton, editButton, currentText)
   })
@@ -193,6 +193,8 @@ function deleteTask(listItem) {
   listItem.remove()
 }
 
+
+
 //script.js
 
 // task.js
@@ -220,8 +222,9 @@ addTaskForm.addEventListener('submit', e => {
   }
 })
 
-//task.js
 
+
+//task.js
 //login.js
 
 const loginForm = document.getElementById('login-form')
@@ -261,8 +264,8 @@ function displayLoggedInSection() {
   document.getElementById('todo-title').style.display = 'block'
   document.getElementById('logged-in-section').style.display = 'block'
 }
-//login.js
 
+//login.js
 //global.js
 
 const loggedInUserKey = 'loggedInUser'
@@ -279,8 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
     displayLoggedInSection()
   }
 })
-//global.js
 
+//global.js
 //registration.js
 const registrationForm = document.getElementById('registration-form')
 
